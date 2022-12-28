@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -291,10 +292,12 @@ class MemberServiceWithPrincipalTest {
                 .status(StadiumReservationStatus.RESERVED)
                 .headCount(2)
                 .price(10000)
+                .member(member)
                 .build();
 
         List<StadiumReservation> reservations = new ArrayList<>();
         reservations.add(reservation);
+
         //given
         given(stadiumReservationRepository.findALlByMember(member))
                 .willReturn(reservations);
